@@ -1,4 +1,4 @@
-import { apiError, asyncHandler, Greige, Unit3 } from "../allImports.js";
+import { apiError, apiResponse, asyncHandler, Greige, Unit3 } from "../allImports.js";
 
 const createUnit3Order = asyncHandler(async (request, response) => {
     const {orderId} = request.params;
@@ -27,13 +27,18 @@ const createUnit3Order = asyncHandler(async (request, response) => {
         revisedEstimatedDeliveryDate2, 
         days,
         greigeOrderId: foundGreigeOrder._id,
+        unit3Creator: request.user.id,
     });
 
-    foundGreigeOrder.unit3OrderId = foundGreigeOrder._id;
+    foundGreigeOrder.unit3OrderId = createdUnit3Order._id;
     foundGreigeOrder.save({validateBeforeSave: false});
 
-    const foundUnit3Order = await Unit3.findById(createdUnit3Order._id).populate("greigeOrderId").select("-greigeCreator -unit3Creator");
+    const foundUnit3Order = await Unit3.findById(createdUnit3Order._id).populate("greigeOrderId").select("-greigeCreator");
     
+    return response.status(201)
+    .json(
+        new apiResponse(201, foundUnit3Order, "Unit3 message created")
+    )
 
 });
 
