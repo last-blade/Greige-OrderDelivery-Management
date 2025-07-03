@@ -24,6 +24,7 @@ app.use(express.static("public"));
 //importing Routes
 import userRoute from "./routes/user.routes.js";
 import greigeRoute from "./routes/greige.routes.js";
+import unit3Route from "./routes/unit3.routes.js";
 
 
 //User Route
@@ -31,5 +32,8 @@ app.use("/api/v1/user", userRoute);
 
 //Greige Route
 app.use("/api/v1/greige", greigeRoute);
+
+//Unit3 Route
+app.use("/api/v1/unit3", unit3Route);
 
 export { app }
