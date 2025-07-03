@@ -1,9 +1,9 @@
 import { apiError, apiResponse, asyncHandler, User } from "../allImports.js";
 
 const registerUser = asyncHandler(async (request, response) => {
-    const {fullName, email, accountType, passowrd} = request.body;
+    const {fullName, email, accountType, password} = request.body;
 
-    if([fullName, email, accountType, passowrd].some(inputField => inputField === undefined || inputField.trim() === "")){
+    if([fullName, email, accountType, password].some(inputField => inputField === undefined || inputField.trim() === "")){
         throw new apiError(400, "All fields are required")
     }
 
@@ -17,7 +17,7 @@ const registerUser = asyncHandler(async (request, response) => {
         fullName, 
         email, 
         accountType, 
-        passowrd
+        password
     });
 
     return response.status(201)
