@@ -17,7 +17,6 @@ const registerUser = asyncHandler(async (request, response) => {
         fullName, 
         email, 
         accountType, 
-        password
     });
 
     return response.status(201)
