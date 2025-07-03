@@ -5,9 +5,7 @@ const getGreigeOrders = asyncHandler(async (request, response) => {
     const page = parseInt(request.query.page) || 1;
     const skip = (page - 1) * limit;
 
-    const totalOrders = await Greige.countDocuments({
-        greigeCreator: request.user.id,
-    });
+    const totalOrders = await Greige.countDocuments({});
 
     const greigeOrders = await Greige.find({
         greigeCreator: request.user.id,
