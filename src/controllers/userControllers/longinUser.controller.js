@@ -28,6 +28,14 @@ const loginUser = asyncHandler(async (request, response) => {
     throw new apiError(404, "User not found");
   }
 
+    const isValidPassword = await foundUser.isPasswordCorrect(password);
+
+    if(!isValidPassword){
+        throw new apiError(401, "Incorrect password")
+    }
+
+    const loggedInUser = await User.findOne({email: email}).select("-password -_id -__v -refreshToken")
+
   const accessToken = await generateAccessToken(foundUser._id);
   const refreshToken = await generateRefreshToken(foundUser._id);
 
@@ -42,7 +50,7 @@ const loginUser = asyncHandler(async (request, response) => {
     .status(200)
     .cookie("accessToken", accessToken, accessTokenCookieOptions)
     .cookie("refreshToken", refreshToken, refreshTokenCookieOptions)
-    .json(new apiResponse(200, foundUser, "Login successfully"));
+    .json(new apiResponse(200, loggedInUser, "Login successfully"));
 });
 
 export { loginUser };
