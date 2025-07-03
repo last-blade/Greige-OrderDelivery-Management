@@ -14,6 +14,6 @@ router.route("/create-greige-order").post(authentication, authorizeRoles("Admin"
 router.route("/greige-orders").get(authentication, getGreigeOrders);
 
 //PUT
-router.route("/edit-greige-order/:orderId").put(authentication, editGreigeOrder);
+router.route("/edit-greige-order/:orderId").put(authentication, authorizeRoles("Admin", "GREIGE"), editGreigeOrder);
 
 export default router;
