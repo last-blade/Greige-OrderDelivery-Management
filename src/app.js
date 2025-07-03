@@ -23,10 +23,13 @@ app.use(express.static("public"));
 
 //importing Routes
 import userRoute from "./routes/user.routes.js";
+import greigeRoute from "./routes/greige.routes.js";
 
 
 //User Route
 app.use("/api/v1/user", userRoute);
 
+//Greige Route
+app.use("/api/v1/greige", greigeRoute);
 
 export { app }
