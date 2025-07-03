@@ -1,4 +1,4 @@
-export const DB_NAME = "Greige OrderDelivery Management SRPK-Prashant";
+export const DB_NAME = "Greige-OrderDelivery-SRPK-Prashant";
 export const accessTokenCookieOptions = {
     httpOnly: true,
     secure: true,
