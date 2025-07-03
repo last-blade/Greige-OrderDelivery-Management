@@ -54,6 +54,11 @@ const greigeSchema = new Schema({
         default: "NA",
     },
 
+    unit3OrderId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Unit3",
+    },
+
     greigeCreator: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
