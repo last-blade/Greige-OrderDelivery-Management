@@ -6,6 +6,7 @@ const registerUser = asyncHandler(async (request, response) => {
     if([fullName, email, accountType, password].some(inputField => inputField === undefined || inputField.trim() === "")){
         throw new apiError(400, "All fields are required")
     }
+    console.log(request.body)
 
     const foundUser = await User.findOne({email: email});
 
@@ -16,7 +17,8 @@ const registerUser = asyncHandler(async (request, response) => {
     await User.create({
         fullName, 
         email, 
-        accountType, 
+        accountType,
+        password, 
     });
 
     return response.status(201)
