@@ -37,18 +37,21 @@ const greigeSchema = new Schema({
         type: String,
         required: false,
         trim: true,
+        default: "NA",
     },
 
     recd: {
         type: String,
         required: false,
         trim: true,
+        default: "NA",
     },
 
     balance: {
         type: String,
         required: false,
-        trim: true
+        trim: true,
+        default: "NA",
     },
 
 }, {timestamps: true});
