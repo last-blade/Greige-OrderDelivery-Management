@@ -16,7 +16,7 @@ const unit3Schema = new Schema({
 
     estimatedDeliveryDate: {
         type: Date,
-        required: false,
+        required: true,
     },
 
     revisedEstimatedDeliveryDate1: {
@@ -33,6 +33,18 @@ const unit3Schema = new Schema({
         requird: true,
     },
 
+    greigeOrderId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Greige",
+        default: null,
+    },
+
+    unit3Creator: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: true,
+    }
+
 }, {timestamps: true});
 
-export const Unit3 = mongoose.model("Unit", unit3Schema);
+export const Unit3 = mongoose.model("Unit3", unit3Schema);
