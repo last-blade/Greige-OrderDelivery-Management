@@ -7,12 +7,10 @@ const getGreigeOrders = asyncHandler(async (request, response) => {
 
     const totalOrders = await Greige.countDocuments({});
 
-    const greigeOrders = await Greige.find({
-        greigeCreator: request.user.id,
-    })
+    const greigeOrders = await Greige.find({})
     .limit(limit)
     .skip(skip)
-    .sort({ createdAt: -1 }).select("-greigeCreator");
+    .sort({ createdAt: -1 }).populate("unit3OrderId").select("-greigeCreator -unit3Creator");
 
     return response.status(200)
     .json(
