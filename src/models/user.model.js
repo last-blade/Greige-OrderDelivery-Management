@@ -30,6 +30,11 @@ const userSchema = new Schema({
         trim: true,
     },
 
+    refreshToken: {
+        type: String,
+        required: false,
+    },
+
 }, {timestamps: true});
 
 userSchema.pre("save", async function(next){
