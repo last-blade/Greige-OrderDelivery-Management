@@ -7,7 +7,7 @@ const registerUser = asyncHandler(async (request, response) => {
         throw new apiError(400, "All fields are required")
     }
 
-    const foundUser = await User.find({email});
+    const foundUser = await User.findOne({email: email});
 
     if(foundUser){
         throw new apiError(409, "User with this email already exists")

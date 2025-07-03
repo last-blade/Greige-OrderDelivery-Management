@@ -22,7 +22,7 @@ const loginUser = asyncHandler(async (request, response) => {
     throw new apiError(400, "Password is required");
   }
 
-  const foundUser = await User.find({ email });
+  const foundUser = await User.findOne({ email: email });
 
   if (!foundUser) {
     throw new apiError(404, "User not found");
