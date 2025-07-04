@@ -20,9 +20,11 @@ const createComment = asyncHandler(async (request, response) => {
         commentedOrder: orderId,
     });
 
+    const foundComment = await Comment.findById(createdComment._id).populate("commentor", "fullName");
+
     return response.status(201)
     .json(
-        new apiResponse(201, createdComment, `Commented on: ${foundGreigeOrder.orderNo}`)
+        new apiResponse(201, foundComment, `Commented on: ${foundGreigeOrder.orderNo}`)
     )
 
 });
