@@ -1,3 +1,4 @@
+import greigeOrderUpdatedEmail from "../../emails/greigeOrderUpdatedEmail.js";
 import { apiError, apiResponse, asyncHandler, Greige } from "../allImports.js";
 
 const editGreigeOrder = asyncHandler(async (request, response) => {
@@ -31,6 +32,20 @@ const editGreigeOrder = asyncHandler(async (request, response) => {
             balance
         }
     }, {new: true}).populate("unit3OrderId").select("-greigeCreator -unit3Creator");
+
+    await greigeOrderUpdatedEmail({
+        recipientName: "UNIT3",
+        recipientEmail: "sunny@natharts.com",
+        orderDate,
+        orderNo,
+        fabricName,
+        requiredAmount,
+        location,
+        deliveryDate,
+        remarks,
+        recd,
+        balance,
+    });
 
     return response.status(200)
     .json(
