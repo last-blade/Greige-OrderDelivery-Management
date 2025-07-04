@@ -53,6 +53,11 @@ const greigeSchema = new Schema({
         trim: true,
         default: "NA",
     },
+    
+    days: {
+        type: Number,
+        requird: true,
+    },
 
     unit3OrderId: {
         type: mongoose.Schema.Types.ObjectId,
