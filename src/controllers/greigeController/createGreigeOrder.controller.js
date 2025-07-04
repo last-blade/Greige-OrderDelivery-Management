@@ -4,8 +4,8 @@ import { apiError, apiResponse, asyncHandler, Greige } from "../allImports.js";
 const createGreigeOrder = asyncHandler(async (request, response) => {
     const {orderDate, orderNo, fabricName, requiredAmount, location, deliveryDate, remarks, recd, balance, days} = request.body;
 
-    if([orderDate, orderNo, fabricName, requiredAmount, location, deliveryDate].some(inputField => inputField === undefined || inputField.trim === "")){
-        throw new apiError(400, "All fields are required")
+    if([orderDate, orderNo, fabricName, requiredAmount, location, deliveryDate, days].some(inputField => inputField === undefined || inputField.trim === "")){
+        throw new apiError(400, "All mandatory fields are required")
     }
 
     const greigeOrder = await Greige.create({
