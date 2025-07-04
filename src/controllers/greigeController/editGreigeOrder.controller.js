@@ -5,7 +5,7 @@ const editGreigeOrder = asyncHandler(async (request, response) => {
     const {orderId} = request.params;
     const {orderDate, orderNo, fabricName, requiredAmount, location, deliveryDate, remarks, recd, balance, days} = request.body;
 
-    if([orderDate, orderNo, fabricName, requiredAmount, location, deliveryDate].some(inputField => inputField === undefined || inputField.trim === "")){
+    if([orderDate, orderNo, fabricName, requiredAmount, location, deliveryDate, days].some(inputField => inputField === undefined || inputField.trim === "")){
         throw new apiError(400, "All fields are required")
     }
 
