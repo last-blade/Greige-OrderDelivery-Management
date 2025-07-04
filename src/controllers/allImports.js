@@ -6,5 +6,6 @@ import { apiError } from "../utils/apiError.js";
 import { apiResponse } from "../utils/apiResponse.js";
 import { generateAccessToken } from "../utils/generateAccessToken.js";
 import { generateRefreshToken } from "../utils/generateRefreshToken.js";
+import { Comment } from "../models/comment.model.js";
 
-export {User, Unit3, Greige, asyncHandler, apiError, apiResponse, generateAccessToken, generateRefreshToken}
+export {User, Unit3, Greige, asyncHandler, apiError, apiResponse, generateAccessToken, generateRefreshToken, Comment}
