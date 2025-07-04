@@ -7,6 +7,8 @@ import { editGreigeOrder } from "../controllers/greigeController/editGreigeOrder
 import { filterGreigeOrder } from "../controllers/greigeController/filterGreigeOrder.controller.js";
 import { deleteGreigeOrder } from "../controllers/greigeController/deleteGreigeOrder.controller.js";
 import { viewGreigeOrder } from "../controllers/greigeController/viewGreigeOrder.controller.js";
+import { createComment } from "../controllers/commentControllers/createComment.controller.js";
+import { getComments } from "../controllers/commentControllers/getComments.controller.js";
 
 const router = Router();
 
@@ -17,6 +19,8 @@ router.route("/create-greige-order").post(authentication, authorizeRoles("Admin"
 router.route("/greige-orders").get(authentication, getGreigeOrders);
 router.route("/filter-orders").post(authentication, filterGreigeOrder);
 router.route("/greige-order/:orderId").get(authentication, viewGreigeOrder);
+router.route("/comment/create-comment/:orderId").post(authentication, createComment);
+router.route("/comment/fetch-comments/:orderId").get(authentication, getComments);
 
 //PUT
 router.route("/edit-greige-order/:orderId").put(authentication, authorizeRoles("Admin", "GREIGE"), editGreigeOrder);
