@@ -13,7 +13,7 @@ router.route("/create-greige-order").post(authentication, authorizeRoles("Admin"
 
 //GET
 router.route("/greige-orders").get(authentication, getGreigeOrders);
-router.route("/filter-orders").get(authentication, filterGreigeOrder);
+router.route("/filter-orders").post(authentication, filterGreigeOrder);
 
 //PUT
 router.route("/edit-greige-order/:orderId").put(authentication, authorizeRoles("Admin", "GREIGE"), editGreigeOrder);
