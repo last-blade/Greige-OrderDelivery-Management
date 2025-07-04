@@ -1,4 +1,4 @@
-import { apiResponse, asyncHandler, Comment } from "../allImports.js";
+import { apiResponse, asyncHandler, Comment, Greige } from "../allImports.js";
 
 const getComments = asyncHandler(async (request, response) => {
     const {orderId} = request.params;
@@ -15,7 +15,7 @@ const getComments = asyncHandler(async (request, response) => {
 
     const comments = await Comment.find({
         commentedOrder: orderId,
-    });
+    }).select("-commentor");
 
     return response.status(200)
     .json(
