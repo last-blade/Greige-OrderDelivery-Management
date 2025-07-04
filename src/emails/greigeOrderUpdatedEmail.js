@@ -13,6 +13,7 @@ const greigeOrderUpdatedEmail = async ({
   remarks,
   recd,
   balance,
+  days,
 }) => {
   const subject = `✏️ Greige Order #${orderNo} Updated – Jasmine Automate`;
 
@@ -71,6 +72,11 @@ const greigeOrderUpdatedEmail = async ({
         <tr>
           <td style="padding:12px;border:1px solid #ddd;background:#f1f5fb;"><strong>Balance</strong></td>
           <td style="padding:12px;border:1px solid #ddd;">${balance}</td>
+        </tr>` : ""}
+        ${days !== undefined ? `
+        <tr>
+          <td style="padding:12px;border:1px solid #ddd;background:#f1f5fb;"><strong>Days</strong></td>
+          <td style="padding:12px;border:1px solid #ddd;">${days}</td>
         </tr>` : ""}
       </table>
 
