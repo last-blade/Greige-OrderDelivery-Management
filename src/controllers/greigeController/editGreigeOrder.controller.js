@@ -3,7 +3,7 @@ import { apiError, apiResponse, asyncHandler, Greige } from "../allImports.js";
 
 const editGreigeOrder = asyncHandler(async (request, response) => {
     const {orderId} = request.params;
-    const {orderDate, orderNo, fabricName, requiredAmount, location, deliveryDate, remarks, recd, balance} = request.body;
+    const {orderDate, orderNo, fabricName, requiredAmount, location, deliveryDate, remarks, recd, balance, days} = request.body;
 
     if([orderDate, orderNo, fabricName, requiredAmount, location, deliveryDate].some(inputField => inputField === undefined || inputField.trim === "")){
         throw new apiError(400, "All fields are required")
@@ -29,7 +29,8 @@ const editGreigeOrder = asyncHandler(async (request, response) => {
             deliveryDate, 
             remarks, 
             recd, 
-            balance
+            balance,
+            days,
         }
     }, {new: true}).populate("unit3OrderId").select("-greigeCreator -unit3Creator");
 
@@ -45,6 +46,7 @@ const editGreigeOrder = asyncHandler(async (request, response) => {
         remarks,
         recd,
         balance,
+        days,
     });
 
     return response.status(200)
