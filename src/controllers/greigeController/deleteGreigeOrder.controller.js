@@ -1,3 +1,4 @@
+import greigeOrderDeletedEmail from "../../emails/greigeOrderDeletedEmail.js";
 import { apiError, apiResponse, asyncHandler, Greige, Unit3 } from "../allImports.js";
 
 const deleteGreigeOrder = asyncHandler(async (request, response) =>{
@@ -20,6 +21,14 @@ const deleteGreigeOrder = asyncHandler(async (request, response) =>{
     }
 
     await Greige.findByIdAndDelete(orderId);
+
+    await greigeOrderDeletedEmail({
+        recipientName: "UNIT3",
+        recipientEmail: "sunny@google.com",
+        orderNo: foundGreigeOrder.orderNo,
+        fabricName: foundGreigeOrder.fabricName,
+        location: foundGreigeOrder.location,
+    });
 
     return response.status(200)
     .json(
