@@ -15,7 +15,7 @@ const getComments = asyncHandler(async (request, response) => {
 
     const comments = await Comment.find({
         commentedOrder: orderId,
-    }).select("-commentor");
+    }).select("-commentor").populate("commentor", "fullName");
 
     return response.status(200)
     .json(
