@@ -81,7 +81,7 @@ const greigeOrderUpdatedEmail = async ({
       </table>
 
       <div style="text-align:center;margin:30px 0;">
-        <a href="${process.env.DASHBOARD_URL || "#"}" target="_blank" style="
+        <a href="https://order-delivery-system.vercel.app" target="_blank" style="
             display:inline-block;
             padding:12px 24px;
             background:#FFA500;
