@@ -46,7 +46,7 @@ const unit3OrderPlacedEmail = async ({
           <td style="padding:12px;border:1px solid #ddd;">${fabricName}</td>
         </tr>
         <tr>
-          <td style="padding:12px;border:1px solid #ddd;background:#f1f5fb;"><strong>Stock</strong></td>
+          <td style="padding:12px;border:1px solid #ddd;background:#f1f5fb;"><strong>Stock(Unit3)</strong></td>
           <td style="padding:12px;border:1px solid #ddd;">${stock}</td>
         </tr>
         <tr>
