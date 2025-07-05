@@ -55,6 +55,13 @@ const greigeSchema = new Schema({
         default: "NA",
     },
 
+    stock: {
+        type: String,
+        required: false,
+        trim: true,
+        default: "0",
+    },
+
     unit3OrderId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Unit3",
