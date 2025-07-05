@@ -55,7 +55,7 @@ const greigeSchema = new Schema({
         default: "NA",
     },
 
-    stock: {
+    greigeStock: {
         type: String,
         required: false,
         trim: true,

@@ -13,7 +13,7 @@ const greigeOrderPlacedEmail = async ({
   remarks,
   recd,
   balance,
-  stock,
+  greigeStock,
 }) => {
   const subject = `🧾 Greige Order #${orderNo} Placed – Jasmine Automate`;
 
@@ -96,11 +96,11 @@ const greigeOrderPlacedEmail = async ({
             : ""
         }
         ${
-          stock !== undefined
+          greigeStock !== undefined
             ? `
         <tr>
-          <td style="padding:12px;border:1px solid #ddd;background:#f1f5fb;"><strong>Stock(Greige)</strong></td>
-          <td style="padding:12px;border:1px solid #ddd;">${stock}</td>
+          <td style="padding:12px;border:1px solid #ddd;background:#f1f5fb;"><strong>Greige Stock</strong></td>
+          <td style="padding:12px;border:1px solid #ddd;">${greigeStock}</td>
         </tr>`
             : ""
         }
