@@ -2,7 +2,7 @@ import greigeOrderPlacedEmail from "../../emails/greigeOrderPlacedEmail.js";
 import { apiError, apiResponse, asyncHandler, Greige } from "../allImports.js";
 
 const createGreigeOrder = asyncHandler(async (request, response) => {
-    const {orderDate, orderNo, fabricName, requiredAmount, location, deliveryDate, remarks, recd, balance} = request.body;
+    const {orderDate, orderNo, fabricName, requiredAmount, location, deliveryDate, remarks, recd, balance, stock} = request.body;
 
     if([orderDate, orderNo, fabricName, requiredAmount, location, deliveryDate].some(inputField => inputField === undefined || inputField.trim === "")){
         throw new apiError(400, "All fields are required")
@@ -18,6 +18,7 @@ const createGreigeOrder = asyncHandler(async (request, response) => {
         remarks, 
         recd, 
         balance,
+        stock,
         greigeCreator: request.user.id,
     });
 
@@ -39,6 +40,7 @@ const createGreigeOrder = asyncHandler(async (request, response) => {
         remarks: foundGreigeOrder.remarks,
         recd: foundGreigeOrder.recd,
         balance: foundGreigeOrder.balance,
+        stock: foundGreigeOrder.stock,
     });
 
     return response.status(201)
